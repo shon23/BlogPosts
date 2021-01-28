@@ -34,6 +34,7 @@ class UserRegisterForm(UserCreationForm):
                             </ul>"""
         self.fields['password2'].help_text = "Tasdiqlash uchun avvalgidek parolni kiriting"
 
+    """
     def clean(self):
         cleaned_data = super(UserRegisterForm, self).clean()
         email = cleaned_data.get("email")
@@ -43,6 +44,7 @@ class UserRegisterForm(UserCreationForm):
         if User.objects.filter(email=email):
             raise forms.ValidationError(f"{email} allaqachon ro'yhatdan o'tgan!")
         return self.cleaned_data
+    """
 
 
 class UserUpdateForm(forms.ModelForm):
