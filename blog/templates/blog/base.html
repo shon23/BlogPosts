@@ -1,120 +1,155 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+    <head>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% if title %}
+            <title>Digital Trend - {{ title }}</title>
+        {% else %}
+            <title>Digital Trend</title>
+        {% endif %}
+    <!--
 
-    <!-- Fontawesome link -->
-    <script src="https://kit.fontawesome.com/8831296380.js" crossorigin="anonymous"></script>
+    DIGITAL TREND
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    https://templatemo.com/tm-538-digital-trend
 
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+    -->
+         <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+         <meta name="description" content="">
+         <meta name="keywords" content="">
+         <meta name="author" content="">
+         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    {% if title %}
-        <title>Django Blog - {{ title }}</title>
-    {% else %}
-        <title>Django Blog</title>
-    {% endif %}
-</head>
-<body>
+         <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+         <link rel="stylesheet" href="{% static 'blog/css/font-awesome.min.css' %}">
+         <link rel="stylesheet" href="{% static 'blog/css/aos.css' %}">
+         <link rel="stylesheet" href="{% static 'blog/css/owl.carousel.min.css' %}">
+         <link rel="stylesheet" href="{% static 'blog/css/owl.theme.default.min.css' %}">
+       <!-- <link rel="stylesheet"  href="{% static 'blog/main.css' %}"> -->
 
-    <!-- HEADER -->
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <div class="container home">
-          <a class="navbar-brand mr-4" href="/"><h2>Django Blog</h2></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
+         <!-- MAIN CSS -->
+         <link rel="stylesheet" href="{% static 'blog/css/templatemo-digital-trend.css' %}">
 
-          <div class="collapse navbar-collapse " id="navbarToggle" >
-
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="/">Home</a>
-              <a class="nav-item nav-link" href="/about/">About</a>
+    </head>
+    <body>
+         <!-- MENU BAR -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                  <i class="fa fa-line-chart"></i>
+                  Digital Trend
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="{% url 'about' %}" class="nav-link smoothScroll">Studio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'project-detail' %}" class="nav-link smoothScroll">Our Works</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'blog' %}" class="nav-link">Blog</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-outline-success mt-1 mb-1" href="{% url 'post-create' %}">Yangi post</a>
+                            <a class="btn btn-sm btn-outline-info mt-1 mb-1" href="{% url 'profile' %}">Profil</a>
+                            <a class="btn btn-sm btn-outline-danger mt-1 mb-1" href="{% url 'logout' %}">Chiqish</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" class="btn btn-sm btn-outline-success mt-1 mb-1" type="submit">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="container">
+                               <a href="{% url 'register' %}" class="btn btn-sm btn-outline-warning mt-1 mb-1" type="button">Sign Up</a>
+                            </div>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                             <a href="{% url 'contact' %}" class="nav-link contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </nav>
+         <!-- Here is each blog code-->
 
+    {% block content %}{% endblock %}
+    <footer class="site-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-5 mx-lg-auto col-md-8 col-10">
+                <h1 class="text-white" data-aos="fade-up" data-aos-delay="100">We make creative <strong>brands</strong> only.</h1>
+              </div>
 
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-               {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'post-create' %}">Yangi post</a>
-                <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
-                <a class="nav-item nav-link" href="{% url 'logout' %}">Chiqish</a>
-              {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}">Kirish</a>
-                <a class="nav-item nav-link" href="{% url 'register' %}">Ro'yhatdan o'tish</a>
-              {% endif %}
+              <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
+                <h4 class="my-4">Contact Info</h4>
+
+                <p class="mb-1">
+                  <i class="fa fa-phone mr-2 footer-icon"></i>
+                  +99 080 070 4224
+                </p>
+
+                <p>
+                  <a href="#">
+                    <i class="fa fa-envelope mr-2 footer-icon"></i>
+                    hello@company.com
+                  </a>
+                </p>
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
+                <h4 class="my-4">Our Studio</h4>
+
+                <p class="mb-1">
+                  <i class="fa fa-home mr-2 footer-icon"></i>
+                  Av. Lúcio Costa - Barra da Tijuca, Rio de Janeiro - RJ, Brazil
+                </p>
+              </div>
+
+              <div class="col-lg-4 mx-lg-auto text-center col-md-8 col-12" data-aos="fade-up" data-aos-delay="400">
+                <p class="copyright-text">Copyright &copy; 2020 Your Company
+                <br>
+                <a rel="nofollow noopener" href="https://templatemo.com">Design: TemplateMo</a></p>
+              </div>
+
+              <div class="col-lg-4 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
+
+                <ul class="footer-link">
+                  <li><a href="#">Stories</a></li>
+                  <li><a href="#">Work with us</a></li>
+                  <li><a href="#">Privacy</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+                <ul class="social-icon">
+                  <li><a href="#" class="fa fa-instagram"></a></li>
+                  <li><a href="#" class="fa fa-twitter"></a></li>
+                  <li><a href="#" class="fa fa-dribbble"></a></li>
+                  <li><a href="#" class="fa fa-behance"></a></li>
+                </ul>
+              </div>
+
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
-
-   <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-          {% block content %}{% endblock %}
-        </div>
-        <div class="col-md-4">
-          <div class="content-section">
-            <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
-              </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- FOOTER -->
-
-<!--
-       <footer class=" bg-steel " >
-        <h6 class="text-center pt-3 pb-4 text-light">
-          Saytda e'lon qilinayotgan mualliflik maqolalarida keltirilgan fikrlar muallifga tegishli
-           va ular sayt tahririyati nuqtai nazarini ifoda etmasligi mumkin.
-        </h6>
-
-        <div style="display: flex; justify-content: space-around;">
-          <h5 style="color: coral; padding: 10px;">Chuncheon <span class="text-light">©2021</span> shokhdev.com</h5>
+        </footer>
 
 
+         <!-- SCRIPTS -->
+         <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+         <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+         <script src="{% static 'blog/js/aos.js' %}"></script>
+         <script src="{% static 'blog/js/owl.carousel.min.js' %}"></script>
+         <script src="{% static 'blog/js/smoothscroll.js' %}"></script>
+         <script src="{% static 'blog/js/custom.js' %}"></script>
 
-          <div class="main">
-            <a href="#"><i class="fab fa-facebook fa-2x " ></i></a>
-            <a href="#"> <i class="fa fa-twitter fa-2x" ></i></a>
-            <a href="#"><i class="fab fa-telegram fa-2x" ></i></a>
-            <a href="#"><i class="fa fa-instagram fa-2x" ></i></a>
-            <a href="#"><i class="fa fa-youtube fa-2x" ></i></a>
-
-          </div>
-        </div>
-      </footer>
-       -->
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+    </body>
 </html>
