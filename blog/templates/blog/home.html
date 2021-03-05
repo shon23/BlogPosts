@@ -1,61 +1,37 @@
-
 {% extends "blog/base.html" %}
-{% load static %}
 {% block content %}
-             <section class="hero hero-bg d-flex justify-content-center align-items-center">
-               <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-10 col-12 d-flex flex-column justify-content-center align-items-center">
-                              <div class="hero-text">
-
-                                   <h1 class="text-white" data-aos="fade-up">We are ready for your digital marketing</h1>
-
-                                   <a href="contact.html" class="custom-btn btn-bg btn mt-3" data-aos="fade-up" data-aos-delay="100">Let us discuss together!</a>
-
-                                   <strong class="d-block py-3 pl-5 text-white" data-aos="fade-up" data-aos-delay="200"><i class="fa fa-phone mr-2"></i> +99 080 070 4224</strong>
-                              </div>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                          <div class="hero-image" data-aos="fade-up" data-aos-delay="300">
-
-                            <img src="{% static 'blog/images/working-girl' %}" class="img-fluid" alt="working girl">
-                          </div>
-                        </div>
-
-                    </div>
-               </div>
-             </section>
-  <!-- TESTIMONIAL -->
- <section class="testimonial section-padding">
-      <div class="container">
-           <div class="row">
-
-                <div class="col-lg-6 col-md-5 col-12">
-                    <div class="contact-image" data-aos="fade-up">
-
-                      <img src="images/female-avatar.png" class="img-fluid" alt="website">
-                    </div>
+    {% for post in posts %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                 </div>
+                <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+    {% if is_paginated %}
 
-                <div class="col-lg-6 col-md-7 col-12">
-                  <h4 class="my-5 pt-3" data-aos="fade-up" data-aos-delay="100">Client Testimonials</h4>
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
 
-                  <div class="quote" data-aos="fade-up" data-aos-delay="200"></div>
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
 
-                  <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo.</h2>
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
 
-                  <p data-aos="fade-up" data-aos-delay="400">
-                    <strong>Mary Zoe</strong>
-
-                    <span class="mx-1">/</span>
-
-                    <small>Digital Agency (CEO)</small>
-                  </p>
-                </div>
-
-           </div>
-      </div>
- </section>
+    {% endif %}
 {% endblock content %}
