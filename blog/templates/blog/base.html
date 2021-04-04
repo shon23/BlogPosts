@@ -80,16 +80,14 @@
         </header>
         <main role="main" class="container">
           <div class="row">
-            <div class="col-md-10" style="float: none; margin: 0 auto;">
-              {% if messages %}
-                {% for message in messages %}
-                  <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                  </div>
-                {% endfor %}
-              {% endif %}
-              {% block content %}{% endblock %}
-            </div>
+                  {% if messages %}
+                    {% for message in messages %}
+                      <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                  {% block content %}{% endblock %}
           </div>
         </main>
         <!-- Optional JavaScript -->

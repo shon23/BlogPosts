@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = "@kgsd$lkfsl^foldfjolsajo;**&DSDLKF"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True#(os.environ.get("DEBUG_VALUE") == "True")
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -124,8 +125,9 @@ USE_TZ = True
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIR = BASE_DIR / 'static'
+
+MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'blog-home'
@@ -139,4 +141,13 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 django_heroku.settings(locals())
 
-
+#
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+#
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+# AWS_ACCESS_KEY_ID = "AKIAVHTMTU2EH6XHPVHR"
+# AWS_SECRET_ACCESS_KEY = "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"
+# AWS_STORAGE_BUCKET_NAME = 'awsmaqola'
+# AWS_S3_CUSTOM_DOMAIN = 'uzbarticles.herokuapp.com'

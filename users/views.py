@@ -9,7 +9,11 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+
             messages.success(request, f'Your account has been created! You can log in.')
+
+            messages.success(request, f'Your account has been created! You can Log In.')
+
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -26,7 +30,11 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
+
             messages.success(request, f'Your account has been created!')
+
+            messages.success(request, f'Your account has been updated!')
+
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
