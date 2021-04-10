@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "@kgsd$lkfsl^foldfjolsajo;**&DSDLKF"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False#(os.environ.get("DEBUG_VALUE") == "True")
+DEBUG = True#(os.environ.get("DEBUG_VALUE") == "True")
 
 ALLOWED_HOSTS = ['uzbarticles.herokuapp.com', '*']
 
