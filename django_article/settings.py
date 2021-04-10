@@ -26,7 +26,7 @@ SECRET_KEY = "@kgsd$lkfsl^foldfjolsajo;**&DSDLKF"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True#(os.environ.get("DEBUG_VALUE") == "True")
 
-ALLOWED_HOSTS = ['uzbarticles.herokuapp.com']
+ALLOWED_HOSTS = ['uzbarticles.herokuapp.com', '*']
 
 
 # Application definition
@@ -123,6 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIR = BASE_DIR / 'static'
@@ -141,13 +142,9 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 django_heroku.settings(locals())
 
-#
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
-#
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-# AWS_ACCESS_KEY_ID = "AKIAVHTMTU2EH6XHPVHR"
-# AWS_SECRET_ACCESS_KEY = "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"
-# AWS_STORAGE_BUCKET_NAME = 'awsmaqola'
-# AWS_S3_CUSTOM_DOMAIN = 'uzbarticles.herokuapp.com'
+AWS_ACCESS_KEY_ID = "AKIAVHTMTU2EKUZK5N65"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "mymaqola"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
