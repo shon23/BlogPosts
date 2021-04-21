@@ -1,0 +1,124 @@
+
+body {
+  background-color: rgb(66, 66, 66);
+  color: white;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6, p, label, small  {
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6{
+  color: rgb(248, 248, 248);
+}
+.center{
+    width: 100%;
+}
+
+ul {
+  margin: 0;
+}
+
+.nav-color {
+  background-color: rgb(0, 0, 0);
+}
+
+.site-header .navbar-nav .nav-link {
+  color: rgb(255, 255, 255);
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: rgb(61, 236, 8);
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  width: 1000px auto;
+  background: black;
+  padding: 4% 2%;
+  border: 5px solid #a1a1a1;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+.ctn {
+    width: auto;
+    margin: auto;
+}
+.content-section-detail {
+  background: black;
+  padding: 4% 2%;
+
+}
+
+.article-title {
+  color: white;
+}
+
+a.article-title:hover {
+  color: rgb(81, 255, 0);
+  color: black;
+}
+
+a.article-title:hover {
+  color: green;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+  margin:auto;
+  padding-right: 5%;
+}
+
+.article-img {
+  height: 60px;
+  width: 60px;
+  margin-right: 10px;
+}
+.article-post-img {
+   padding-right: 65px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   max-width: 100%;
+   max-height: 100%;
+   display: block;
+
+}
+
+.article-metadata {
+  padding-bottom: 15px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #888888
+}
+
+.article-metadata a:hover {
+  color:  #06b806;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 100px;
+  width: 100px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+small{
+    color: #C8C8C8;
+}
+
+  font-size: 5.5rem;
+}
