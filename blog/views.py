@@ -5,16 +5,30 @@ from django.views.generic import (ListView,
                                   DetailView,
                                   CreateView,
                                   UpdateView,
-                                  DeleteView
+                                  DeleteView,
                                   )
+
 from .models import Post
 
 
-def home(request):
-    context = {
-        'posts': Post.objects.all()
-    }
-    return render(request, 'blog/home.html')
+def create(self, request):
+    if request.method == "POST":
+        uploaded_file = request.FILES['post_pic/']
+        create_obj = Post.objects.create(image=uploaded_file)
+        create_obj.save()
+    return render(request, 'blog/post_form.html')
+
+def about(request):
+    return render(request, 'blog/about.html', {'title': 'About'})
+
+def blog(request):
+    return render(request, 'blog/blog.html', {'title': 'Blog'})
+
+def project(request):
+    return render(request, 'blog/project-detail.html', {'title': 'Projects'})
+
+def contact(request):
+    return render(request, 'blog/contact.html', {'title': 'Contact'})
 
 class PostListView(ListView):
     model = Post
@@ -40,13 +54,11 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'header_image', 'content']
-
+    fields = ['title', 'content']
+   
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-
 
 
 
@@ -74,22 +86,3 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
-
-def create(self, request):
-        if request.method == "POST":
-            uploaded_file = request.FILES['post_pic/']
-            create_obj = Post.objects.create(image=uploaded_file)
-            create_obj.save()
-        return render(request, 'post-create')
-
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
-
-def blog(request):
-    return render(request, 'blog/blog.html', {'title': 'Blog'})
-
-def project(request):
-    return render(request, 'blog/project-detail.html', {'title': 'Projects'})
-
-def contact(request):
-    return render(request, 'blog/contact.html', {'title': 'Contact'})

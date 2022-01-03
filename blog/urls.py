@@ -1,6 +1,8 @@
 from django.urls import path
+
 from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView
 from . import views
+from django.views.generic import FormView
 
 
 urlpatterns = [
